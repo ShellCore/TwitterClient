@@ -1,4 +1,4 @@
-package com.edx.shell.android.twitterclient.images;
+package com.edx.shell.android.twitterclient.images.ui;
 
 
 import android.os.Bundle;

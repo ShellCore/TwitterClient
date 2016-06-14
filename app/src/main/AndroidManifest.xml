@@ -14,6 +14,7 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="f8f92d7184124f383c5916dea8d28d8a2e966395" />
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".main.MainActivity"></activity>
     </application>
 
 </manifest>

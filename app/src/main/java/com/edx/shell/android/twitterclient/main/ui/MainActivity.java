@@ -1,4 +1,4 @@
-package com.edx.shell.android.twitterclient.main;
+package com.edx.shell.android.twitterclient.main.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

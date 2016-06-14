@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,9 @@ import android.view.MenuItem;
 
 import com.edx.shell.android.twitterclient.LoginActivity;
 import com.edx.shell.android.twitterclient.R;
+import com.edx.shell.android.twitterclient.hashtags.HashtagsFragment;
+import com.edx.shell.android.twitterclient.images.ImagesFragment;
+import com.edx.shell.android.twitterclient.main.ui.adapters.MainSectionsPagerAdapter;
 import com.twitter.sdk.android.Twitter;
 
 import butterknife.Bind;
@@ -28,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.abl_main)
     AppBarLayout ablMain;
     @Bind(R.id.vpg_main)
-    ViewPager vpgMain;
+    ViewPager viewPager;
     @Bind(R.id.coo_main)
     CoordinatorLayout cooMain;
 
@@ -38,6 +42,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(tbrMain);
+
+        setupAdapter();
+    }
+
+    private void setupAdapter() {
+        Fragment[] fragments = new Fragment[]{
+                new ImagesFragment(),
+                new HashtagsFragment()
+        };
+        String[] titles = new String[]{getString(R.string.main_title_images), getString(R.string.main_title_hashtags)};
+        MainSectionsPagerAdapter adapter = new MainSectionsPagerAdapter(getSupportFragmentManager(), fragments, titles);
+        viewPager.setAdapter(adapter);
+        tbsMain.setupWithViewPager(viewPager);
     }
 
     @Override

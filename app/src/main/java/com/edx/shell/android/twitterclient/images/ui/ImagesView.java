@@ -5,8 +5,8 @@ import com.edx.shell.android.twitterclient.entities.Image;
 import java.util.List;
 
 public interface ImagesView {
-    void showElements();
-    void hideElements();
+    void showImages();
+    void hideImages();
     void showProgress();
     void hideProgress();
 

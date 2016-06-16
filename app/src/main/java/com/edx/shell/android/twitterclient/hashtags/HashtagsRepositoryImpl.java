@@ -7,6 +7,7 @@ import com.edx.shell.android.twitterclient.libs.base.EventBus;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.models.HashtagEntity;
 import com.twitter.sdk.android.core.models.Tweet;
 
 import java.util.ArrayList;
@@ -37,9 +38,18 @@ public class HashtagsRepositoryImpl implements HashtagsRepository {
                 List<Hashtag> items = new ArrayList<>();
                 for (Tweet tweet :
                         result.data) {
+                    if (containsHashtags(tweet)) {
+                        Hashtag tweetModel = new Hashtag();
+                        tweetModel.setId(tweet.idStr);
+                        tweetModel.setFavoriteCount(tweet.favoriteCount);
+                        tweetModel.setTweetText(tweet.text);
 
-                    // TODO
-
+                        List<String> hashtags = new ArrayList<>();
+                        for (HashtagEntity hashtag : tweet.entities.hashtags) {
+                            hashtags.add(hashtag.text);
+                        }
+                        tweetModel.setHashtags(hashtags);
+                    }
                 }
                 Collections.sort(items, new Comparator<Hashtag>() {
                     @Override
@@ -56,6 +66,12 @@ public class HashtagsRepositoryImpl implements HashtagsRepository {
             }
         };
         client.getTimelineService().homeTimeline(TWEET_COUNT, true, true, true, true, callback);
+    }
+
+    private boolean containsHashtags(Tweet tweet) {
+        return tweet.entities != null
+                && tweet.entities.hashtags != null
+                && !tweet.entities.hashtags.isEmpty();
     }
 
     private void post(List<Hashtag> hashtags) {

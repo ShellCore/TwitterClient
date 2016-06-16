@@ -4,12 +4,15 @@ import android.app.Application;
 import android.support.v4.app.Fragment;
 
 import com.edx.shell.android.twitterclient.dependence_injection.LibsModule;
+import com.edx.shell.android.twitterclient.hashtags.adapters.OnHashtagItemClickListener;
+import com.edx.shell.android.twitterclient.hashtags.dependence_injection.DaggerHashtagsComponent;
 import com.edx.shell.android.twitterclient.hashtags.dependence_injection.HashtagsComponent;
+import com.edx.shell.android.twitterclient.hashtags.dependence_injection.HashtagsModule;
 import com.edx.shell.android.twitterclient.hashtags.ui.HashtagsView;
-import com.edx.shell.android.twitterclient.images.adapters.OnItemClickListener;
-import com.edx.shell.android.twitterclient.images.dependency_injection.DaggerImagesComponent;
-import com.edx.shell.android.twitterclient.images.dependency_injection.ImagesComponent;
-import com.edx.shell.android.twitterclient.images.dependency_injection.ImagesModule;
+import com.edx.shell.android.twitterclient.images.adapters.OnImageItemClickListener;
+import com.edx.shell.android.twitterclient.images.dependence_injection.DaggerImagesComponent;
+import com.edx.shell.android.twitterclient.images.dependence_injection.ImagesComponent;
+import com.edx.shell.android.twitterclient.images.dependence_injection.ImagesModule;
 import com.edx.shell.android.twitterclient.images.ui.ImagesView;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -29,14 +32,17 @@ public class TwitterClientApp extends Application {
         Fabric.with(this, new Twitter(authConfig));
     }
 
-    public ImagesComponent getImagesComponent(Fragment fragment, ImagesView view, OnItemClickListener clickListener) {
+    public ImagesComponent getImagesComponent(Fragment fragment, ImagesView view, OnImageItemClickListener clickListener) {
         return DaggerImagesComponent.builder()
                 .libsModule(new LibsModule(fragment))
                 .imagesModule(new ImagesModule(view, clickListener))
                 .build();
     }
 
-    public HashtagsComponent getHashtagsComponent(HashtagsView view, OnItemClickListener clickListener) {
-        return null;
+    public HashtagsComponent getHashtagsComponent(HashtagsView view, OnHashtagItemClickListener clickListener) {
+        return DaggerHashtagsComponent.builder()
+                .libsModule(null)
+                .hashtagsModule(new HashtagsModule(view, clickListener))
+                .build();
     }
 }

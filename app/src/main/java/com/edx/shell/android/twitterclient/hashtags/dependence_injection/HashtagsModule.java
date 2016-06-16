@@ -9,8 +9,8 @@ import com.edx.shell.android.twitterclient.hashtags.HashtagsPresenterImpl;
 import com.edx.shell.android.twitterclient.hashtags.HashtagsRepository;
 import com.edx.shell.android.twitterclient.hashtags.HashtagsRepositoryImpl;
 import com.edx.shell.android.twitterclient.hashtags.adapters.HashtagsAdapter;
+import com.edx.shell.android.twitterclient.hashtags.adapters.OnHashtagItemClickListener;
 import com.edx.shell.android.twitterclient.hashtags.ui.HashtagsView;
-import com.edx.shell.android.twitterclient.images.adapters.OnItemClickListener;
 import com.edx.shell.android.twitterclient.libs.base.EventBus;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Session;
@@ -26,22 +26,22 @@ import dagger.Provides;
 @Module
 public class HashtagsModule {
     private HashtagsView view;
-    private OnItemClickListener clickListener;
+    private OnHashtagItemClickListener clickListener;
 
-    public HashtagsModule(HashtagsView view, OnItemClickListener clickListener) {
+    public HashtagsModule(HashtagsView view, OnHashtagItemClickListener clickListener) {
         this.view = view;
         this.clickListener = clickListener;
     }
 
     @Provides
     @Singleton
-    HashtagsAdapter providesAdapter(List<Hashtag> dataset, OnItemClickListener clickListener) {
+    HashtagsAdapter providesAdapter(List<Hashtag> dataset, OnHashtagItemClickListener clickListener) {
         return new HashtagsAdapter(dataset, clickListener);
     }
 
     @Provides
     @Singleton
-    OnItemClickListener providesOnItemClickListener() {
+    OnHashtagItemClickListener providesOnItemClickListener() {
         return clickListener;
     }
 

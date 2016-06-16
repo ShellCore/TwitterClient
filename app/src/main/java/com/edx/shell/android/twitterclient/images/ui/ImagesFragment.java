@@ -19,8 +19,8 @@ import com.edx.shell.android.twitterclient.TwitterClientApp;
 import com.edx.shell.android.twitterclient.entities.Image;
 import com.edx.shell.android.twitterclient.images.ImagesPresenter;
 import com.edx.shell.android.twitterclient.images.adapters.ImagesAdapter;
-import com.edx.shell.android.twitterclient.images.adapters.OnItemClickListener;
-import com.edx.shell.android.twitterclient.images.dependency_injection.ImagesComponent;
+import com.edx.shell.android.twitterclient.images.adapters.OnImageItemClickListener;
+import com.edx.shell.android.twitterclient.images.dependence_injection.ImagesComponent;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ImagesFragment extends Fragment implements ImagesView, OnItemClickListener {
+public class ImagesFragment extends Fragment implements ImagesView, OnImageItemClickListener {
 
     // Constantes
     private static final int NUM_COLUMNS = 2;

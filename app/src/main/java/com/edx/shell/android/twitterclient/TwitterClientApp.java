@@ -4,6 +4,8 @@ import android.app.Application;
 import android.support.v4.app.Fragment;
 
 import com.edx.shell.android.twitterclient.dependence_injection.LibsModule;
+import com.edx.shell.android.twitterclient.hashtags.dependence_injection.HashtagsComponent;
+import com.edx.shell.android.twitterclient.hashtags.ui.HashtagsView;
 import com.edx.shell.android.twitterclient.images.adapters.OnItemClickListener;
 import com.edx.shell.android.twitterclient.images.dependency_injection.DaggerImagesComponent;
 import com.edx.shell.android.twitterclient.images.dependency_injection.ImagesComponent;
@@ -32,5 +34,9 @@ public class TwitterClientApp extends Application {
                 .libsModule(new LibsModule(fragment))
                 .imagesModule(new ImagesModule(view, clickListener))
                 .build();
+    }
+
+    public HashtagsComponent getHashtagsComponent(HashtagsView view, OnItemClickListener clickListener) {
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package com.edx.shell.android.twitterclient.hashtags;
+package com.edx.shell.android.twitterclient.hashtags.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

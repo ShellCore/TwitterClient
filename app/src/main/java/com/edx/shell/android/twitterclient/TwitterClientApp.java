@@ -41,7 +41,7 @@ public class TwitterClientApp extends Application {
 
     public HashtagsComponent getHashtagsComponent(HashtagsView view, OnHashtagItemClickListener clickListener) {
         return DaggerHashtagsComponent.builder()
-                .libsModule(null)
+                .libsModule(new LibsModule(null))
                 .hashtagsModule(new HashtagsModule(view, clickListener))
                 .build();
     }

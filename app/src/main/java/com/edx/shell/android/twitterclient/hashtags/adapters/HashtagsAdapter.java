@@ -77,7 +77,7 @@ public class HashtagsAdapter extends RecyclerView.Adapter<HashtagsAdapter.ViewHo
             adapter = new HashtagListAdapter(items);
 
             CustomGridLayoutManager layoutManager = new CustomGridLayoutManager(context, HASHTAG_NUM_COLUMNS);
-            recHashtags.setLayoutManager(null);
+            recHashtags.setLayoutManager(layoutManager);
             recHashtags.setAdapter(adapter);
         }
 

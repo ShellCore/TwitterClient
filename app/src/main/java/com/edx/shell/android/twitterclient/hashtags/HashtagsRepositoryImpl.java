@@ -49,6 +49,7 @@ public class HashtagsRepositoryImpl implements HashtagsRepository {
                             hashtags.add(hashtag.text);
                         }
                         tweetModel.setHashtags(hashtags);
+                        items.add(tweetModel);
                     }
                 }
                 Collections.sort(items, new Comparator<Hashtag>() {

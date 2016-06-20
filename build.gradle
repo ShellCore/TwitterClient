@@ -28,6 +28,7 @@ ext {
     compileSdkVersion = 23
     buildToolsVersion = '23.0.3'
 
+    recyclerViewVersion = '23.1.1'
     supportLibraryVersion = '23.4.0'
     daggerVersion = '2.0.1'
     jsr250Version = '1.0'

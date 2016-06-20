@@ -14,7 +14,7 @@ import android.view.MenuItem;
 
 import com.edx.shell.android.twitterclient.LoginActivity;
 import com.edx.shell.android.twitterclient.R;
-import com.edx.shell.android.twitterclient.hashtags.HashtagsFragment;
+import com.edx.shell.android.twitterclient.hashtags.ui.HashtagsFragment;
 import com.edx.shell.android.twitterclient.images.ui.ImagesFragment;
 import com.edx.shell.android.twitterclient.main.ui.adapters.MainSectionsPagerAdapter;
 import com.twitter.sdk.android.Twitter;

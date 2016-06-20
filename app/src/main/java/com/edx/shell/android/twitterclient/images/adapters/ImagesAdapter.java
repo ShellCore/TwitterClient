@@ -20,12 +20,12 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
 
     private List<Image> dataset;
     private ImageLoader imageLoader;
-    private OnItemClickListener onItemClickListener;
+    private OnImageItemClickListener onImageItemClickListener;
 
-    public ImagesAdapter(List<Image> dataset, ImageLoader imageLoader, OnItemClickListener onItemClickListener) {
+    public ImagesAdapter(List<Image> dataset, ImageLoader imageLoader, OnImageItemClickListener onImageItemClickListener) {
         this.dataset = dataset;
         this.imageLoader = imageLoader;
-        this.onItemClickListener = onItemClickListener;
+        this.onImageItemClickListener = onImageItemClickListener;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Image imageTweet = dataset.get(position);
-        holder.setOnClickListener(imageTweet, onItemClickListener);
+        holder.setOnClickListener(imageTweet, onImageItemClickListener);
         holder.txtTweet.setText(imageTweet.getTweet());
         imageLoader.load(holder.imgMedia, imageTweet.getImageUrl());
     }
@@ -70,7 +70,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
             this.view = itemView;
         }
 
-        public void setOnClickListener(final Image image, final OnItemClickListener listener) {
+        public void setOnClickListener(final Image image, final OnImageItemClickListener listener) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

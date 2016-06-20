@@ -2,6 +2,6 @@ package com.edx.shell.android.twitterclient.images.adapters;
 
 import com.edx.shell.android.twitterclient.entities.Image;
 
-public interface OnItemClickListener {
+public interface OnImageItemClickListener {
     void onItemClick(Image image);
 }

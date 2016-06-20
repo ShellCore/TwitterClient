@@ -1,4 +1,4 @@
-package com.edx.shell.android.twitterclient.images.dependency_injection;
+package com.edx.shell.android.twitterclient.images.dependence_injection;
 
 import com.edx.shell.android.twitterclient.dependence_injection.LibsModule;
 import com.edx.shell.android.twitterclient.images.ImagesPresenter;

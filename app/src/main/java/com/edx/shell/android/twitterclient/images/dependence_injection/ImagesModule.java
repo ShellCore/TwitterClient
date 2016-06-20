@@ -1,4 +1,4 @@
-package com.edx.shell.android.twitterclient.images.dependency_injection;
+package com.edx.shell.android.twitterclient.images.dependence_injection;
 
 import com.edx.shell.android.twitterclient.api.CustomTwitterApiClient;
 import com.edx.shell.android.twitterclient.entities.Image;
@@ -9,7 +9,7 @@ import com.edx.shell.android.twitterclient.images.ImagesPresenterImpl;
 import com.edx.shell.android.twitterclient.images.ImagesRepository;
 import com.edx.shell.android.twitterclient.images.ImagesRepositoryImpl;
 import com.edx.shell.android.twitterclient.images.adapters.ImagesAdapter;
-import com.edx.shell.android.twitterclient.images.adapters.OnItemClickListener;
+import com.edx.shell.android.twitterclient.images.adapters.OnImageItemClickListener;
 import com.edx.shell.android.twitterclient.images.ui.ImagesView;
 import com.edx.shell.android.twitterclient.libs.base.EventBus;
 import com.edx.shell.android.twitterclient.libs.base.ImageLoader;
@@ -27,22 +27,22 @@ import dagger.Provides;
 @Module
 public class ImagesModule {
     private ImagesView view;
-    private OnItemClickListener clickListener;
+    private OnImageItemClickListener clickListener;
 
-    public ImagesModule(ImagesView view, OnItemClickListener clickListener) {
+    public ImagesModule(ImagesView view, OnImageItemClickListener clickListener) {
         this.view = view;
         this.clickListener = clickListener;
     }
 
     @Provides
     @Singleton
-    ImagesAdapter providesAdapter(List<Image> dataset, ImageLoader imageLoader, OnItemClickListener clickListener) {
+    ImagesAdapter providesAdapter(List<Image> dataset, ImageLoader imageLoader, OnImageItemClickListener clickListener) {
         return new ImagesAdapter(dataset, imageLoader, clickListener);
     }
 
     @Provides
     @Singleton
-    OnItemClickListener providesOnItemClickListener() {
+    OnImageItemClickListener providesOnItemClickListener() {
         return clickListener;
     }
 

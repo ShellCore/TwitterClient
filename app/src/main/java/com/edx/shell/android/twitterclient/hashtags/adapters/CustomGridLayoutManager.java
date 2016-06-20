@@ -68,7 +68,7 @@ public class CustomGridLayoutManager extends GridLayoutManager {
 
             measuredDimension[0] = v.getMeasuredWidth() + p.leftMargin + p.rightMargin;
             measuredDimension[1] = v.getMeasuredHeight() + p.topMargin + p.bottomMargin;
-
+            recycler.recycleView(v);
         }
     }
 }
